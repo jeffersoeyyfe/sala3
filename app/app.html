@@ -19,7 +19,10 @@
     <h2>Lista de Estudiantes</h2>
     @if (estudiantes.length > 0) {
       @for (estudiante of estudiantes; track estudiante.id) {
-        <div class="tarjeta-estudiante">
+        
+<div class="tarjeta-estudiante"
+     [class.editando]="idEditado === estudiante.id">
+
           <p><strong>Nombre:</strong> {{ estudiante.nombre }}</p>
           <p><strong>Correo:</strong> {{ estudiante.correo }}</p>
           <p><strong>Carrera:</strong> {{ estudiante.carrera }}</p>

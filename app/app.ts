@@ -18,6 +18,9 @@ private estudianteService = inject(EstudianteService);
   estudiantes = this.estudianteService.obtenerEstudiantes();
   
   nuevoEstudiante: Estudiante = { id: 0, nombre: '', correo: '', carrera: '', telefono: '' };
+  
+  idEditado: number | null = null;
+
 
   guardarEstudiante() {
     if (this.nuevoEstudiante.id === 0) {
@@ -28,9 +31,12 @@ private estudianteService = inject(EstudianteService);
     this.limpiarFormulario();
   }
 
+  
   seleccionarParaEditar(estudiante: Estudiante) {
     this.nuevoEstudiante = { ...estudiante };
+    this.idEditado = estudiante.id;
   }
+
 
   eliminar(id: number) {
   if (window.confirm('¿Estás seguro de que deseas eliminar a este estudiante?')) {
@@ -38,7 +44,17 @@ private estudianteService = inject(EstudianteService);
   }
   }
 
+  
   limpiarFormulario() {
-    this.nuevoEstudiante = { id: 0, nombre: '', correo: '', carrera: '', telefono: '' };
+    this.nuevoEstudiante = {
+      id: 0,
+      nombre: '',
+      correo: '',
+      carrera: '',
+      telefono: ''
+    };
+
+    this.idEditado = null;
   }
+
 }
